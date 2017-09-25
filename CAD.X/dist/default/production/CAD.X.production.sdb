@@ -1,0 +1,90 @@
+[p LITE_MODE AUTOSTATIC LFSROK EMI_WORD ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F4550 ]
+[d frameptr 4065 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"54 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 3 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 3 0 ]
+"20 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\ftsub.c
+[v ___ftsub __ftsub `(f  1 e 3 0 ]
+"10 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 3 0 ]
+"245
+[v ___flsub __flsub `(d  1 e 3 0 ]
+"11 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 3 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\sprcmul.c
+[v ___flmul __flmul `(d  1 e 3 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"15 D:\Microcontroladores\CAD.X\CAD.c
+[v _getCad getCad `(s  1 e 2 0 ]
+"36
+[v _main main `(v  1 e 1 0 ]
+"137 D:\Microcontroladores\CAD.X\flex_lcd.h
+[v _Lcd_Chr_CP Lcd_Chr_CP `(v  1 e 1 0 ]
+"151
+[v _Lcd_Cmd Lcd_Cmd `(v  1 e 1 0 ]
+"2703 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f4550.h
+[v _PORTD PORTD `VEuc  1 e 1 @3971 ]
+"3425
+[v _TRISA TRISA `VEuc  1 e 1 @3986 ]
+"3999
+[v _TRISD TRISD `VEuc  1 e 1 @3989 ]
+"6508
+[v _ADCON2 ADCON2 `VEuc  1 e 1 @4032 ]
+"6579
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @4033 ]
+"6664
+[v _ADCON0 ADCON0 `VEuc  1 e 1 @4034 ]
+"6797
+[v _ADRESH ADRESH `VEuc  1 e 1 @4036 ]
+"7984
+[v _OSCCON OSCCON `VEuc  1 e 1 @4051 ]
+"8953
+[v _ADON ADON `VEb  1 e 0 @32272 ]
+"9471
+[v _GO_DONE GO_DONE `VEb  1 e 0 @32273 ]
+"9941
+[v _RD2 RD2 `VEb  1 e 0 @31770 ]
+"9943
+[v _RD3 RD3 `VEb  1 e 0 @31771 ]
+"9945
+[v _RD4 RD4 `VEb  1 e 0 @31772 ]
+"9947
+[v _RD5 RD5 `VEb  1 e 0 @31773 ]
+"9949
+[v _RD6 RD6 `VEb  1 e 0 @31774 ]
+"9951
+[v _RD7 RD7 `VEb  1 e 0 @31775 ]
+"10263
+[v _TRISD2 TRISD2 `VEb  1 e 0 @31914 ]
+"10265
+[v _TRISD3 TRISD3 `VEb  1 e 0 @31915 ]
+"10267
+[v _TRISD4 TRISD4 `VEb  1 e 0 @31916 ]
+"10269
+[v _TRISD5 TRISD5 `VEb  1 e 0 @31917 ]
+"10271
+[v _TRISD6 TRISD6 `VEb  1 e 0 @31918 ]
+"10273
+[v _TRISD7 TRISD7 `VEb  1 e 0 @31919 ]
+"36 D:\Microcontroladores\CAD.X\CAD.c
+[v _main main `(v  1 e 1 0 ]
+{
+"45
+} 0
+"15
+[v _getCad getCad `(s  1 e 2 0 ]
+{
+[v getCad@canal canal `uc  1 a 1 wreg ]
+[v getCad@canal canal `uc  1 a 1 wreg ]
+[v getCad@canal canal `uc  1 a 1 2 ]
+"35
+} 0

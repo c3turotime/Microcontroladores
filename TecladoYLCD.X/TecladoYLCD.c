@@ -46,9 +46,9 @@ void main(void) {
     Lcd_Init();
     Lcd_Cmd(LCD_CLEAR);
     while(1){
-    sprintf(buffer, "Valor: %03d",inKey());    
+    sprintf(buffer, "Valor: %03d",inKey());     
     Lcd_Out2(1,1,buffer);
-    
+     
     }
 }
 

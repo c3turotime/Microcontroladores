@@ -1,0 +1,13 @@
+Puntos a explicar:
+1.- esquematico
+2.- libreria Serial_LCD, data sheet con valores de configuracion en baudios
+3.- programa del maestro y Configuracion de RX
+4.- pasos para recibir de manera asincrona p.252
+5.- espera de recepcion RCIF obtencion de datos RCREG
+6.- Logica Maestro Esclavo
+7.- programa del esclavo
+8.- inconvenientes de esperar sin limitaciones
+9.- resaltar lo importante de colocar a 0 RCIF
+10.- es importante apagar la recepcion.
+,
+rsin (registro,tiempo, lugar al que ir en caso del tiempo agotado,)

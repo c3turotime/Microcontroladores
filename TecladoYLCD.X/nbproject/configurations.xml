@@ -5,7 +5,7 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>confi.h</itemPath>
-      <itemPath>flex_lcd.h</itemPath>
+      <itemPath>Serial_lcd.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"

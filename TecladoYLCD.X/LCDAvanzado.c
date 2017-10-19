@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "confi.h"
-#include "flex_lcd.h"
+#include "Serial_lcd.h"
 #include <pic18f4550.h>
 
 /*

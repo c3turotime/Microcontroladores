@@ -1,0 +1,40 @@
+ 
+USB FRAMEWORK
+--------------------------------------------------------------------------------
+HID - no changes (at the moment ;-)
+
+CDC 121 usb_device_cdc.c
+#if defined(__XC8)
+  volatile unsigned char cdc_data_tx[CDC_DATA_IN_EP_SIZE] IN_DATA_BUFFER_ADDRESS_TAG;
+  volatile unsigned char cdc_data_rx[CDC_DATA_OUT_EP_SIZE] OUT_DATA_BUFFER_ADDRESS_TAG;
+#elif defined(COMPILER_MPLAB_C18)
+  #pragma udata CDC_CUSTOM_OUT_DATA_BUFFER IN_DATA_BUFFER_ADDRESS_TAG
+  volatile unsigned char cdc_data_tx[CDC_DATA_IN_EP_SIZE];
+  #pragma udata CDC_CUSTOM_IN_DATA_BUFFER OUT_DATA_BUFFER_ADDRESS_TAG
+  volatile unsigned char cdc_data_rx[CDC_DATA_OUT_EP_SIZE]];
+  #pragma udata
+#endif
+
+
+
+
+
+
+
+
+
+BUT IN string.h of c18 :-(
+--------------------------------------------------------------------------------
+623 //VSK
+624 //MEM_MODEL rom char *memchrpgm (auto const MEM_MODEL rom char *s, auto const unsigned char c, auto sizerom_t n);
+
+
+
+
+
+
+Error - section '.udata_usb_device.o' can not fit the section.
+Section '.udata_usb_device.o' length=0x00000036
+
+Error - section '.udata_usb_device_cdc.o' can not fit the section.
+Section '.udata_usb_device_cdc.o' length=0x0000002c

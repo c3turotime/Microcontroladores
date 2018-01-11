@@ -1,0 +1,35 @@
+Oscilador
+PLLDIV USBDIV Config1l 4Mh de cristal externo
+Config1h HS
+
+p.165 imagen
+Vergen 1
+Fsen 1
+upuen 1
+
+USTAT
+
+BDnSTAT Register (SIE Mode)
+
+
+ENUMERATION
+1. USB Reset: Reset the device. Thus, the device
+is not configured and does not have an address
+(address 0).
+2. Get Device Descriptor: The host requests a
+small portion of the device descriptor.
+3. USB Reset: Reset the device again.
+4. Set Address: The host assigns an address to the
+device.
+5. Get Device Descriptor: The host retrieves the
+device descriptor, gathering info such as
+manufacturer, type of device, maximum control
+packet size.
+6. Get configuration descriptors.
+7. Get any other descriptors.
+8. Set a configuration.
+The exact enumeration process depends on the host.
+
+line to 3.3V. For a
+low-speed device, the pull-up resistor is connected to
+the D- line

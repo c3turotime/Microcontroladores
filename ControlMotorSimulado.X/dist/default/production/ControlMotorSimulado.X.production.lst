@@ -1,0 +1,897 @@
+
+
+Microchip Technology PIC18 LITE Macro Assembler V1.42 build -159332390 
+                                                                                               Wed Jan 10 23:41:35 2018
+
+Microchip Technology Omniscient Code Generator v1.42 (Free mode) build 201704130522
+     1                           	processor	18F2550
+     2                           	fnconf	rparam,??,?,0
+     3                           	opt	pw 120
+     4                           	opt	lm
+     5                           	psect	cinit,global,reloc=2,class=CODE,delta=1
+     6                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1,noexec
+     7                           	psect	text0,global,reloc=2,class=CODE,delta=1
+     8                           	psect	text1,global,reloc=2,class=CODE,delta=1
+     9                           	psect	text2,global,reloc=2,class=CODE,delta=1,group=1
+    10                           	psect	text3,global,reloc=2,class=CODE,delta=1,group=1
+    11                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1,noexec
+    12                           	psect	rparam,global,class=COMRAM,space=1,delta=1,noexec
+    13  0000                     
+    14                           ; Version 1.42
+    15                           ; Generated 13/04/2017 GMT
+    16                           ; 
+    17                           ; Copyright © 2017, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    18                           ; All rights reserved.
+    19                           ; 
+    20                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    21                           ; 
+    22                           ; Redistribution and use in source and binary forms, with or without modification, are
+    23                           ; permitted provided that the following conditions are met:
+    24                           ; 
+    25                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    26                           ;        conditions and the following disclaimer.
+    27                           ; 
+    28                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    29                           ;        of conditions and the following disclaimer in the documentation and/or other
+    30                           ;        materials provided with the distribution.
+    31                           ; 
+    32                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    33                           ;        software without specific prior written permission.
+    34                           ; 
+    35                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    36                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    37                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    38                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    39                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    40                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    41                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    42                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    43                           ; 
+    44                           ; 
+    45                           ; Code-generator required, PIC18F2550 Definitions
+    46                           ; 
+    47                           ; SFR Addresses
+    48  0000                     _CCPR1L	set	4030
+    49  0000                     _PORTBbits	set	3969
+    50  0000                     _T2CON	set	4042
+    51  0000                     _TRISCbits	set	3988
+    52  0000                     _CCP1CONbits	set	4029
+    53  0000                     _PR2	set	4043
+    54  0000                     _TRISBbits	set	3987
+    55  0000                     _TRISA	set	3986
+    56  0000                     _OSCCON	set	4051
+    57  0000                     _ADRESH	set	4036
+    58  0000                     _ADCON2	set	4032
+    59  0000                     _ADCON0	set	4034
+    60  0000                     _ADCON1	set	4033
+    61  0000                     _GO_DONE	set	32273
+    62  0000                     _ADON	set	32272
+    63                           
+    64                           ; #config settings
+    65  0000                     
+    66                           	psect	cinit
+    67  007D46                     __pcinit:
+    68                           	opt stack 0
+    69  007D46                     start_initialization:
+    70                           	opt stack 0
+    71  007D46                     __initialization:
+    72                           	opt stack 0
+    73  007D46                     end_of_initialization:
+    74                           	opt stack 0
+    75  007D46                     __end_of__initialization:
+    76                           	opt stack 0
+    77  007D46  0E00               	movlw	low (__Lmediumconst shr (0+16))
+    78  007D48  6EF8               	movwf	tblptru,c
+    79  007D4A  0100               	movlb	0
+    80  007D4C  EF58  F03F         	goto	_main	;jump to C main() function
+    81                           tblptru	equ	0xFF8
+    82                           
+    83                           	psect	cstackCOMRAM
+    84  000001                     __pcstackCOMRAM:
+    85                           	opt stack 0
+    86  000001                     ?_getCad:
+    87                           	opt stack 0
+    88  000001                     ?___lmul:
+    89                           	opt stack 0
+    90  000001                     ?___aldiv:
+    91                           	opt stack 0
+    92  000001                     ___lmul@multiplier:
+    93                           	opt stack 0
+    94  000001                     ___aldiv@dividend:
+    95                           	opt stack 0
+    96                           
+    97                           ; 4 bytes @ 0x0
+    98  000001                     	ds	2
+    99  000003                     getCad@canal:
+   100                           	opt stack 0
+   101                           
+   102                           ; 1 bytes @ 0x2
+   103  000003                     	ds	2
+   104  000005                     ___lmul@multiplicand:
+   105                           	opt stack 0
+   106  000005                     ___aldiv@divisor:
+   107                           	opt stack 0
+   108                           
+   109                           ; 4 bytes @ 0x4
+   110  000005                     	ds	4
+   111  000009                     ___aldiv@counter:
+   112                           	opt stack 0
+   113  000009                     ___lmul@product:
+   114                           	opt stack 0
+   115                           
+   116                           ; 4 bytes @ 0x8
+   117  000009                     	ds	1
+   118  00000A                     ___aldiv@sign:
+   119                           	opt stack 0
+   120                           
+   121                           ; 1 bytes @ 0x9
+   122  00000A                     	ds	1
+   123  00000B                     ___aldiv@quotient:
+   124                           	opt stack 0
+   125                           
+   126                           ; 4 bytes @ 0xA
+   127  00000B                     	ds	4
+   128  00000F                     ??_main:
+   129                           
+   130                           ; 1 bytes @ 0xE
+   131  00000F                     	ds	2
+   132  000011                     main@vejez:
+   133                           	opt stack 0
+   134                           
+   135                           ; 4 bytes @ 0x10
+   136  000011                     	ds	4
+   137  000015                     main@valor:
+   138                           	opt stack 0
+   139                           
+   140                           ; 4 bytes @ 0x14
+   141  000015                     	ds	4
+   142                           tblptru	equ	0xFF8
+   143                           
+   144 ;;
+   145 ;;Main: autosize = 0, tempsize = 2, incstack = 0, save=0
+   146 ;;
+   147 ;; *************** function _main *****************
+   148 ;; Defined at:
+   149 ;;		line 106 in file "ControlMotorSimulado.c"
+   150 ;; Parameters:    Size  Location     Type
+   151 ;;		None
+   152 ;; Auto vars:     Size  Location     Type
+   153 ;;  valor           4   20[COMRAM] long 
+   154 ;;  vejez           4   16[COMRAM] long 
+   155 ;; Return value:  Size  Location     Type
+   156 ;;                  1    wreg      void 
+   157 ;; Registers used:
+   158 ;;		wreg, status,2, status,0, cstack
+   159 ;; Tracked objects:
+   160 ;;		On entry : 0/0
+   161 ;;		On exit  : 0/0
+   162 ;;		Unchanged: 0/0
+   163 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   164 ;;      Params:         0       0       0       0       0       0       0       0       0
+   165 ;;      Locals:         8       0       0       0       0       0       0       0       0
+   166 ;;      Temps:          2       0       0       0       0       0       0       0       0
+   167 ;;      Totals:        10       0       0       0       0       0       0       0       0
+   168 ;;Total ram usage:       10 bytes
+   169 ;; Hardware stack levels required when called:    1
+   170 ;; This function calls:
+   171 ;;		___aldiv
+   172 ;;		___lmul
+   173 ;;		_getCad
+   174 ;; This function is called by:
+   175 ;;		Startup code after reset
+   176 ;; This function uses a non-reentrant model
+   177 ;;
+   178                           
+   179                           	psect	text0
+   180  007EB0                     __ptext0:
+   181                           	opt stack 0
+   182  007EB0                     _main:
+   183                           	opt stack 30
+   184                           
+   185                           ;ControlMotorSimulado.c: 108: OSCCON= 0b01110010;
+   186                           
+   187                           ;incstack = 0
+   188  007EB0  0E72               	movlw	114
+   189  007EB2  6ED3               	movwf	4051,c	;volatile
+   190                           
+   191                           ;ControlMotorSimulado.c: 110: TRISA=0xff;
+   192  007EB4  6892               	setf	3986,c	;volatile
+   193                           
+   194                           ;ControlMotorSimulado.c: 111: TRISBbits.RB7=1;
+   195  007EB6  8E93               	bsf	3987,7,c	;volatile
+   196                           
+   197                           ;ControlMotorSimulado.c: 115: long valor;
+   198                           ;ControlMotorSimulado.c: 116: long vejez;
+   199                           ;ControlMotorSimulado.c: 119: PR2=199;
+   200  007EB8  0EC7               	movlw	199
+   201  007EBA  6ECB               	movwf	4043,c	;volatile
+   202                           
+   203                           ;ControlMotorSimulado.c: 128: CCP1CONbits.DC1B1=0;
+   204  007EBC  9ABD               	bcf	4029,5,c	;volatile
+   205                           
+   206                           ;ControlMotorSimulado.c: 129: CCP1CONbits.DC1B0=0;
+   207  007EBE  98BD               	bcf	4029,4,c	;volatile
+   208                           
+   209                           ;ControlMotorSimulado.c: 130: TRISCbits.RC2=0;
+   210  007EC0  9494               	bcf	3988,2,c	;volatile
+   211                           
+   212                           ;ControlMotorSimulado.c: 131: T2CON= 0b00000100;
+   213  007EC2  0E04               	movlw	4
+   214  007EC4  6ECA               	movwf	4042,c	;volatile
+   215  007EC6                     l857:
+   216                           
+   217                           ;ControlMotorSimulado.c: 150: if(PORTBbits.RB7){
+   218  007EC6  AE81               	btfss	3969,7,c	;volatile
+   219  007EC8  D083               	goto	l49
+   220                           
+   221                           ;ControlMotorSimulado.c: 152: CCP1CONbits.CCP1M3=1;
+   222  007ECA  86BD               	bsf	4029,3,c	;volatile
+   223                           
+   224                           ;ControlMotorSimulado.c: 153: CCP1CONbits.CCP1M2=1;
+   225  007ECC  84BD               	bsf	4029,2,c	;volatile
+   226                           
+   227                           ;ControlMotorSimulado.c: 154: valor=getCad(0);
+   228  007ECE  0E00               	movlw	0
+   229  007ED0  ECA8  F03E         	call	_getCad
+   230  007ED4  C001  F015         	movff	?_getCad,main@valor
+   231  007ED8  C002  F016         	movff	?_getCad+1,main@valor+1
+   232  007EDC  0E00               	movlw	0
+   233  007EDE  BE16               	btfsc	main@valor+1,7,c
+   234  007EE0  0EFF               	movlw	-1
+   235  007EE2  6E17               	movwf	main@valor+2,c
+   236  007EE4  6E18               	movwf	main@valor+3,c
+   237                           
+   238                           ;ControlMotorSimulado.c: 156: valor=valor*200;
+   239  007EE6  C015  F001         	movff	main@valor,___lmul@multiplier
+   240  007EEA  C016  F002         	movff	main@valor+1,___lmul@multiplier+1
+   241  007EEE  C017  F003         	movff	main@valor+2,___lmul@multiplier+2
+   242  007EF2  C018  F004         	movff	main@valor+3,___lmul@multiplier+3
+   243  007EF6  0EC8               	movlw	200
+   244  007EF8  6E05               	movwf	___lmul@multiplicand,c
+   245  007EFA  0E00               	movlw	0
+   246  007EFC  6E06               	movwf	___lmul@multiplicand+1,c
+   247  007EFE  0E00               	movlw	0
+   248  007F00  6E07               	movwf	___lmul@multiplicand+2,c
+   249  007F02  0E00               	movlw	0
+   250  007F04  6E08               	movwf	___lmul@multiplicand+3,c
+   251  007F06  ECC7  F03E         	call	___lmul	;wreg free
+   252  007F0A  C001  F015         	movff	?___lmul,main@valor
+   253  007F0E  C002  F016         	movff	?___lmul+1,main@valor+1
+   254  007F12  C003  F017         	movff	?___lmul+2,main@valor+2
+   255  007F16  C004  F018         	movff	?___lmul+3,main@valor+3
+   256                           
+   257                           ;ControlMotorSimulado.c: 157: valor=valor/256;
+   258  007F1A  C015  F001         	movff	main@valor,___aldiv@dividend
+   259  007F1E  C016  F002         	movff	main@valor+1,___aldiv@dividend+1
+   260  007F22  C017  F003         	movff	main@valor+2,___aldiv@dividend+2
+   261  007F26  C018  F004         	movff	main@valor+3,___aldiv@dividend+3
+   262  007F2A  0E00               	movlw	0
+   263  007F2C  6E05               	movwf	___aldiv@divisor,c
+   264  007F2E  0E01               	movlw	1
+   265  007F30  6E06               	movwf	___aldiv@divisor+1,c
+   266  007F32  0E00               	movlw	0
+   267  007F34  6E07               	movwf	___aldiv@divisor+2,c
+   268  007F36  0E00               	movlw	0
+   269  007F38  6E08               	movwf	___aldiv@divisor+3,c
+   270  007F3A  ECF2  F03E         	call	___aldiv	;wreg free
+   271  007F3E  C001  F015         	movff	?___aldiv,main@valor
+   272  007F42  C002  F016         	movff	?___aldiv+1,main@valor+1
+   273  007F46  C003  F017         	movff	?___aldiv+2,main@valor+2
+   274  007F4A  C004  F018         	movff	?___aldiv+3,main@valor+3
+   275                           
+   276                           ;ControlMotorSimulado.c: 159: vejez= getCad(1);
+   277  007F4E  0E01               	movlw	1
+   278  007F50  ECA8  F03E         	call	_getCad
+   279  007F54  C001  F011         	movff	?_getCad,main@vejez
+   280  007F58  C002  F012         	movff	?_getCad+1,main@vejez+1
+   281  007F5C  0E00               	movlw	0
+   282  007F5E  BE12               	btfsc	main@vejez+1,7,c
+   283  007F60  0EFF               	movlw	-1
+   284  007F62  6E13               	movwf	main@vejez+2,c
+   285  007F64  6E14               	movwf	main@vejez+3,c
+   286                           
+   287                           ;ControlMotorSimulado.c: 160: valor=valor*vejez;
+   288  007F66  C015  F001         	movff	main@valor,___lmul@multiplier
+   289  007F6A  C016  F002         	movff	main@valor+1,___lmul@multiplier+1
+   290  007F6E  C017  F003         	movff	main@valor+2,___lmul@multiplier+2
+   291  007F72  C018  F004         	movff	main@valor+3,___lmul@multiplier+3
+   292  007F76  C011  F005         	movff	main@vejez,___lmul@multiplicand
+   293  007F7A  C012  F006         	movff	main@vejez+1,___lmul@multiplicand+1
+   294  007F7E  C013  F007         	movff	main@vejez+2,___lmul@multiplicand+2
+   295  007F82  C014  F008         	movff	main@vejez+3,___lmul@multiplicand+3
+   296  007F86  ECC7  F03E         	call	___lmul	;wreg free
+   297  007F8A  C001  F015         	movff	?___lmul,main@valor
+   298  007F8E  C002  F016         	movff	?___lmul+1,main@valor+1
+   299  007F92  C003  F017         	movff	?___lmul+2,main@valor+2
+   300  007F96  C004  F018         	movff	?___lmul+3,main@valor+3
+   301                           
+   302                           ;ControlMotorSimulado.c: 161: valor=valor/256;
+   303  007F9A  C015  F001         	movff	main@valor,___aldiv@dividend
+   304  007F9E  C016  F002         	movff	main@valor+1,___aldiv@dividend+1
+   305  007FA2  C017  F003         	movff	main@valor+2,___aldiv@dividend+2
+   306  007FA6  C018  F004         	movff	main@valor+3,___aldiv@dividend+3
+   307  007FAA  0E00               	movlw	0
+   308  007FAC  6E05               	movwf	___aldiv@divisor,c
+   309  007FAE  0E01               	movlw	1
+   310  007FB0  6E06               	movwf	___aldiv@divisor+1,c
+   311  007FB2  0E00               	movlw	0
+   312  007FB4  6E07               	movwf	___aldiv@divisor+2,c
+   313  007FB6  0E00               	movlw	0
+   314  007FB8  6E08               	movwf	___aldiv@divisor+3,c
+   315  007FBA  ECF2  F03E         	call	___aldiv	;wreg free
+   316  007FBE  C001  F015         	movff	?___aldiv,main@valor
+   317  007FC2  C002  F016         	movff	?___aldiv+1,main@valor+1
+   318  007FC6  C003  F017         	movff	?___aldiv+2,main@valor+2
+   319  007FCA  C004  F018         	movff	?___aldiv+3,main@valor+3
+   320  007FCE  D00A               	goto	l867
+   321  007FD0                     l49:
+   322                           
+   323                           ;ControlMotorSimulado.c: 165: CCP1CONbits.CCP1M3=0;
+   324  007FD0  96BD               	bcf	4029,3,c	;volatile
+   325                           
+   326                           ;ControlMotorSimulado.c: 166: CCP1CONbits.CCP1M2=0;
+   327  007FD2  94BD               	bcf	4029,2,c	;volatile
+   328                           
+   329                           ;ControlMotorSimulado.c: 167: valor=1;
+   330  007FD4  0E01               	movlw	1
+   331  007FD6  6E15               	movwf	main@valor,c
+   332  007FD8  0E00               	movlw	0
+   333  007FDA  6E16               	movwf	main@valor+1,c
+   334  007FDC  0E00               	movlw	0
+   335  007FDE  6E17               	movwf	main@valor+2,c
+   336  007FE0  0E00               	movlw	0
+   337  007FE2  6E18               	movwf	main@valor+3,c
+   338  007FE4                     l867:
+   339                           
+   340                           ;ControlMotorSimulado.c: 168: CCPR1L=valor;
+   341  007FE4  C015  FFBE         	movff	main@valor,4030	;volatile
+   342                           
+   343                           ;ControlMotorSimulado.c: 169: }
+   344                           ;ControlMotorSimulado.c: 170: _delay((unsigned long)((500)*(8000000/4000.0)));
+   345  007FE8  0E06               	movlw	6
+   346  007FEA  6E10               	movwf	(??_main+1)& (0+255),c
+   347  007FEC  0E13               	movlw	19
+   348  007FEE  6E0F               	movwf	??_main& (0+255),c
+   349  007FF0  0EAE               	movlw	174
+   350  007FF2                     u217:
+   351  007FF2  2EE8               	decfsz	wreg,f,c
+   352  007FF4  D7FE               	bra	u217
+   353  007FF6  2E0F               	decfsz	??_main& (0+255),f,c
+   354  007FF8  D7FC               	bra	u217
+   355  007FFA  2E10               	decfsz	(??_main+1)& (0+255),f,c
+   356  007FFC  D7FA               	bra	u217
+   357  007FFE  D763               	goto	l857
+   358  008000                     __end_of_main:
+   359                           	opt stack 0
+   360                           tblptru	equ	0xFF8
+   361                           wreg	equ	0xFE8
+   362                           
+   363 ;; *************** function _getCad *****************
+   364 ;; Defined at:
+   365 ;;		line 85 in file "ControlMotorSimulado.c"
+   366 ;; Parameters:    Size  Location     Type
+   367 ;;  canal           1    wreg     unsigned char 
+   368 ;; Auto vars:     Size  Location     Type
+   369 ;;  canal           1    2[COMRAM] unsigned char 
+   370 ;; Return value:  Size  Location     Type
+   371 ;;                  2    0[COMRAM] short 
+   372 ;; Registers used:
+   373 ;;		wreg, status,2, status,0
+   374 ;; Tracked objects:
+   375 ;;		On entry : 0/0
+   376 ;;		On exit  : 0/0
+   377 ;;		Unchanged: 0/0
+   378 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   379 ;;      Params:         2       0       0       0       0       0       0       0       0
+   380 ;;      Locals:         1       0       0       0       0       0       0       0       0
+   381 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   382 ;;      Totals:         3       0       0       0       0       0       0       0       0
+   383 ;;Total ram usage:        3 bytes
+   384 ;; Hardware stack levels used:    1
+   385 ;; This function calls:
+   386 ;;		Nothing
+   387 ;; This function is called by:
+   388 ;;		_main
+   389 ;; This function uses a non-reentrant model
+   390 ;;
+   391                           
+   392                           	psect	text1
+   393  007D50                     __ptext1:
+   394                           	opt stack 0
+   395  007D50                     _getCad:
+   396                           	opt stack 30
+   397                           
+   398                           ;incstack = 0
+   399                           ;getCad@canal stored from wreg
+   400  007D50  6E03               	movwf	getCad@canal,c
+   401                           
+   402                           ;ControlMotorSimulado.c: 86: ADCON1=0b00001100;
+   403  007D52  0E0C               	movlw	12
+   404  007D54  6EC1               	movwf	4033,c	;volatile
+   405                           
+   406                           ;ControlMotorSimulado.c: 87: switch(canal){
+   407  007D56  D007               	goto	l783
+   408  007D58                     l775:
+   409                           
+   410                           ;ControlMotorSimulado.c: 89: ADCON0= 0b00000010;
+   411  007D58  0E02               	movlw	2
+   412  007D5A  D003               	goto	L2
+   413  007D5C                     l777:
+   414                           
+   415                           ;ControlMotorSimulado.c: 92: ADCON0= 0b00000110;
+   416  007D5C  0E06               	movlw	6
+   417  007D5E  D001               	goto	L2
+   418  007D60                     l779:
+   419                           
+   420                           ;ControlMotorSimulado.c: 95: ADCON0= 0b00001010;
+   421  007D60  0E0A               	movlw	10
+   422  007D62                     L2:
+   423  007D62  6EC2               	movwf	4034,c	;volatile
+   424                           
+   425                           ;ControlMotorSimulado.c: 97: }
+   426                           
+   427                           ;ControlMotorSimulado.c: 96: break;
+   428  007D64  D00A               	goto	l785
+   429  007D66                     l783:
+   430  007D66  5003               	movf	getCad@canal,w,c
+   431                           
+   432                           ; Switch size 1, requested type "space"
+   433                           ; Number of cases is 3, Range of values is 0 to 2
+   434                           ; switch strategies available:
+   435                           ; Name         Instructions Cycles
+   436                           ; simple_byte           10     6 (average)
+   437                           ;	Chosen strategy is simple_byte
+   438  007D68  0A00               	xorlw	0	; case 0
+   439  007D6A  B4D8               	btfsc	status,2,c
+   440  007D6C  D7F5               	goto	l775
+   441  007D6E  0A01               	xorlw	1	; case 1
+   442  007D70  B4D8               	btfsc	status,2,c
+   443  007D72  D7F4               	goto	l777
+   444  007D74  0A03               	xorlw	3	; case 2
+   445  007D76  B4D8               	btfsc	status,2,c
+   446  007D78  D7F3               	goto	l779
+   447  007D7A                     l785:
+   448                           
+   449                           ;ControlMotorSimulado.c: 98: ADCON2= 0b00101001;
+   450  007D7A  0E29               	movlw	41
+   451  007D7C  6EC0               	movwf	4032,c	;volatile
+   452                           
+   453                           ;ControlMotorSimulado.c: 99: ADON=1;
+   454  007D7E  80C2               	bsf	4034,0,c	;volatile
+   455                           
+   456                           ;ControlMotorSimulado.c: 100: GO_DONE=1;
+   457  007D80  82C2               	bsf	4034,1,c	;volatile
+   458  007D82                     l40:
+   459  007D82  B2C2               	btfsc	4034,1,c	;volatile
+   460  007D84  D7FE               	goto	l40
+   461                           
+   462                           ;ControlMotorSimulado.c: 103: }
+   463                           ;ControlMotorSimulado.c: 104: return ADRESH;
+   464  007D86  CFC4 F001          	movff	4036,?_getCad	;volatile
+   465  007D8A  6A02               	clrf	?_getCad+1,c
+   466  007D8C  0012               	return		;funcret
+   467  007D8E                     __end_of_getCad:
+   468                           	opt stack 0
+   469                           tblptru	equ	0xFF8
+   470                           wreg	equ	0xFE8
+   471                           status	equ	0xFD8
+   472                           
+   473 ;; *************** function ___lmul *****************
+   474 ;; Defined at:
+   475 ;;		line 15 in file "C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\Umul32.c"
+   476 ;; Parameters:    Size  Location     Type
+   477 ;;  multiplier      4    0[COMRAM] unsigned long 
+   478 ;;  multiplicand    4    4[COMRAM] unsigned long 
+   479 ;; Auto vars:     Size  Location     Type
+   480 ;;  product         4    8[COMRAM] unsigned long 
+   481 ;; Return value:  Size  Location     Type
+   482 ;;                  4    0[COMRAM] unsigned long 
+   483 ;; Registers used:
+   484 ;;		wreg, status,2, status,0
+   485 ;; Tracked objects:
+   486 ;;		On entry : 0/0
+   487 ;;		On exit  : 0/0
+   488 ;;		Unchanged: 0/0
+   489 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   490 ;;      Params:         8       0       0       0       0       0       0       0       0
+   491 ;;      Locals:         4       0       0       0       0       0       0       0       0
+   492 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   493 ;;      Totals:        12       0       0       0       0       0       0       0       0
+   494 ;;Total ram usage:       12 bytes
+   495 ;; Hardware stack levels used:    1
+   496 ;; This function calls:
+   497 ;;		Nothing
+   498 ;; This function is called by:
+   499 ;;		_main
+   500 ;; This function uses a non-reentrant model
+   501 ;;
+   502                           
+   503                           	psect	text2
+   504  007D8E                     __ptext2:
+   505                           	opt stack 0
+   506  007D8E                     ___lmul:
+   507                           	opt stack 30
+   508                           
+   509                           ;incstack = 0
+   510  007D8E  0E00               	movlw	0
+   511  007D90  6E09               	movwf	___lmul@product,c
+   512  007D92  0E00               	movlw	0
+   513  007D94  6E0A               	movwf	___lmul@product+1,c
+   514  007D96  0E00               	movlw	0
+   515  007D98  6E0B               	movwf	___lmul@product+2,c
+   516  007D9A  0E00               	movlw	0
+   517  007D9C  6E0C               	movwf	___lmul@product+3,c
+   518  007D9E                     l793:
+   519  007D9E  A001               	btfss	___lmul@multiplier,0,c
+   520  007DA0  D008               	goto	l797
+   521  007DA2  5005               	movf	___lmul@multiplicand,w,c
+   522  007DA4  2609               	addwf	___lmul@product,f,c
+   523  007DA6  5006               	movf	___lmul@multiplicand+1,w,c
+   524  007DA8  220A               	addwfc	___lmul@product+1,f,c
+   525  007DAA  5007               	movf	___lmul@multiplicand+2,w,c
+   526  007DAC  220B               	addwfc	___lmul@product+2,f,c
+   527  007DAE  5008               	movf	___lmul@multiplicand+3,w,c
+   528  007DB0  220C               	addwfc	___lmul@product+3,f,c
+   529  007DB2                     l797:
+   530  007DB2  90D8               	bcf	status,0,c
+   531  007DB4  3605               	rlcf	___lmul@multiplicand,f,c
+   532  007DB6  3606               	rlcf	___lmul@multiplicand+1,f,c
+   533  007DB8  3607               	rlcf	___lmul@multiplicand+2,f,c
+   534  007DBA  3608               	rlcf	___lmul@multiplicand+3,f,c
+   535  007DBC  90D8               	bcf	status,0,c
+   536  007DBE  3204               	rrcf	___lmul@multiplier+3,f,c
+   537  007DC0  3203               	rrcf	___lmul@multiplier+2,f,c
+   538  007DC2  3202               	rrcf	___lmul@multiplier+1,f,c
+   539  007DC4  3201               	rrcf	___lmul@multiplier,f,c
+   540  007DC6  5001               	movf	___lmul@multiplier,w,c
+   541  007DC8  1002               	iorwf	___lmul@multiplier+1,w,c
+   542  007DCA  1003               	iorwf	___lmul@multiplier+2,w,c
+   543  007DCC  1004               	iorwf	___lmul@multiplier+3,w,c
+   544  007DCE  A4D8               	btfss	status,2,c
+   545  007DD0  D7E6               	goto	l793
+   546  007DD2  C009  F001         	movff	___lmul@product,?___lmul
+   547  007DD6  C00A  F002         	movff	___lmul@product+1,?___lmul+1
+   548  007DDA  C00B  F003         	movff	___lmul@product+2,?___lmul+2
+   549  007DDE  C00C  F004         	movff	___lmul@product+3,?___lmul+3
+   550  007DE2  0012               	return		;funcret
+   551  007DE4                     __end_of___lmul:
+   552                           	opt stack 0
+   553                           tblptru	equ	0xFF8
+   554                           wreg	equ	0xFE8
+   555                           status	equ	0xFD8
+   556                           
+   557 ;; *************** function ___aldiv *****************
+   558 ;; Defined at:
+   559 ;;		line 8 in file "C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\aldiv.c"
+   560 ;; Parameters:    Size  Location     Type
+   561 ;;  dividend        4    0[COMRAM] long 
+   562 ;;  divisor         4    4[COMRAM] long 
+   563 ;; Auto vars:     Size  Location     Type
+   564 ;;  quotient        4   10[COMRAM] long 
+   565 ;;  sign            1    9[COMRAM] unsigned char 
+   566 ;;  counter         1    8[COMRAM] unsigned char 
+   567 ;; Return value:  Size  Location     Type
+   568 ;;                  4    0[COMRAM] long 
+   569 ;; Registers used:
+   570 ;;		wreg, status,2, status,0
+   571 ;; Tracked objects:
+   572 ;;		On entry : 0/0
+   573 ;;		On exit  : 0/0
+   574 ;;		Unchanged: 0/0
+   575 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   576 ;;      Params:         8       0       0       0       0       0       0       0       0
+   577 ;;      Locals:         6       0       0       0       0       0       0       0       0
+   578 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   579 ;;      Totals:        14       0       0       0       0       0       0       0       0
+   580 ;;Total ram usage:       14 bytes
+   581 ;; Hardware stack levels used:    1
+   582 ;; This function calls:
+   583 ;;		Nothing
+   584 ;; This function is called by:
+   585 ;;		_main
+   586 ;; This function uses a non-reentrant model
+   587 ;;
+   588                           
+   589                           	psect	text3
+   590  007DE4                     __ptext3:
+   591                           	opt stack 0
+   592  007DE4                     ___aldiv:
+   593                           	opt stack 30
+   594                           
+   595                           ;incstack = 0
+   596  007DE4  0E00               	movlw	0
+   597  007DE6  6E0A               	movwf	___aldiv@sign,c
+   598  007DE8  AE08               	btfss	___aldiv@divisor+3,7,c
+   599  007DEA  D00A               	goto	l809
+   600  007DEC  1E08               	comf	___aldiv@divisor+3,f,c
+   601  007DEE  1E07               	comf	___aldiv@divisor+2,f,c
+   602  007DF0  1E06               	comf	___aldiv@divisor+1,f,c
+   603  007DF2  6C05               	negf	___aldiv@divisor,c
+   604  007DF4  0E00               	movlw	0
+   605  007DF6  2206               	addwfc	___aldiv@divisor+1,f,c
+   606  007DF8  2207               	addwfc	___aldiv@divisor+2,f,c
+   607  007DFA  2208               	addwfc	___aldiv@divisor+3,f,c
+   608  007DFC  0E01               	movlw	1
+   609  007DFE  6E0A               	movwf	___aldiv@sign,c
+   610  007E00                     l809:
+   611  007E00  AE04               	btfss	___aldiv@dividend+3,7,c
+   612  007E02  D00A               	goto	l815
+   613  007E04  1E04               	comf	___aldiv@dividend+3,f,c
+   614  007E06  1E03               	comf	___aldiv@dividend+2,f,c
+   615  007E08  1E02               	comf	___aldiv@dividend+1,f,c
+   616  007E0A  6C01               	negf	___aldiv@dividend,c
+   617  007E0C  0E00               	movlw	0
+   618  007E0E  2202               	addwfc	___aldiv@dividend+1,f,c
+   619  007E10  2203               	addwfc	___aldiv@dividend+2,f,c
+   620  007E12  2204               	addwfc	___aldiv@dividend+3,f,c
+   621  007E14  0E01               	movlw	1
+   622  007E16  1A0A               	xorwf	___aldiv@sign,f,c
+   623  007E18                     l815:
+   624  007E18  0E00               	movlw	0
+   625  007E1A  6E0B               	movwf	___aldiv@quotient,c
+   626  007E1C  0E00               	movlw	0
+   627  007E1E  6E0C               	movwf	___aldiv@quotient+1,c
+   628  007E20  0E00               	movlw	0
+   629  007E22  6E0D               	movwf	___aldiv@quotient+2,c
+   630  007E24  0E00               	movlw	0
+   631  007E26  6E0E               	movwf	___aldiv@quotient+3,c
+   632  007E28  5005               	movf	___aldiv@divisor,w,c
+   633  007E2A  1006               	iorwf	___aldiv@divisor+1,w,c
+   634  007E2C  1007               	iorwf	___aldiv@divisor+2,w,c
+   635  007E2E  1008               	iorwf	___aldiv@divisor+3,w,c
+   636  007E30  B4D8               	btfsc	status,2,c
+   637  007E32  D02A               	goto	l837
+   638  007E34  0E01               	movlw	1
+   639  007E36  6E09               	movwf	___aldiv@counter,c
+   640  007E38  D006               	goto	l823
+   641  007E3A                     l821:
+   642  007E3A  90D8               	bcf	status,0,c
+   643  007E3C  3605               	rlcf	___aldiv@divisor,f,c
+   644  007E3E  3606               	rlcf	___aldiv@divisor+1,f,c
+   645  007E40  3607               	rlcf	___aldiv@divisor+2,f,c
+   646  007E42  3608               	rlcf	___aldiv@divisor+3,f,c
+   647  007E44  2A09               	incf	___aldiv@counter,f,c
+   648  007E46                     l823:
+   649  007E46  AE08               	btfss	___aldiv@divisor+3,7,c
+   650  007E48  D7F8               	goto	l821
+   651  007E4A                     l825:
+   652  007E4A  90D8               	bcf	status,0,c
+   653  007E4C  360B               	rlcf	___aldiv@quotient,f,c
+   654  007E4E  360C               	rlcf	___aldiv@quotient+1,f,c
+   655  007E50  360D               	rlcf	___aldiv@quotient+2,f,c
+   656  007E52  360E               	rlcf	___aldiv@quotient+3,f,c
+   657  007E54  5005               	movf	___aldiv@divisor,w,c
+   658  007E56  5C01               	subwf	___aldiv@dividend,w,c
+   659  007E58  5006               	movf	___aldiv@divisor+1,w,c
+   660  007E5A  5802               	subwfb	___aldiv@dividend+1,w,c
+   661  007E5C  5007               	movf	___aldiv@divisor+2,w,c
+   662  007E5E  5803               	subwfb	___aldiv@dividend+2,w,c
+   663  007E60  5008               	movf	___aldiv@divisor+3,w,c
+   664  007E62  5804               	subwfb	___aldiv@dividend+3,w,c
+   665  007E64  A0D8               	btfss	status,0,c
+   666  007E66  D009               	goto	l833
+   667  007E68  5005               	movf	___aldiv@divisor,w,c
+   668  007E6A  5E01               	subwf	___aldiv@dividend,f,c
+   669  007E6C  5006               	movf	___aldiv@divisor+1,w,c
+   670  007E6E  5A02               	subwfb	___aldiv@dividend+1,f,c
+   671  007E70  5007               	movf	___aldiv@divisor+2,w,c
+   672  007E72  5A03               	subwfb	___aldiv@dividend+2,f,c
+   673  007E74  5008               	movf	___aldiv@divisor+3,w,c
+   674  007E76  5A04               	subwfb	___aldiv@dividend+3,f,c
+   675  007E78  800B               	bsf	___aldiv@quotient,0,c
+   676  007E7A                     l833:
+   677  007E7A  90D8               	bcf	status,0,c
+   678  007E7C  3208               	rrcf	___aldiv@divisor+3,f,c
+   679  007E7E  3207               	rrcf	___aldiv@divisor+2,f,c
+   680  007E80  3206               	rrcf	___aldiv@divisor+1,f,c
+   681  007E82  3205               	rrcf	___aldiv@divisor,f,c
+   682  007E84  2E09               	decfsz	___aldiv@counter,f,c
+   683  007E86  D7E1               	goto	l825
+   684  007E88                     l837:
+   685  007E88  500A               	movf	___aldiv@sign,w,c
+   686  007E8A  B4D8               	btfsc	status,2,c
+   687  007E8C  D008               	goto	l841
+   688  007E8E  1E0E               	comf	___aldiv@quotient+3,f,c
+   689  007E90  1E0D               	comf	___aldiv@quotient+2,f,c
+   690  007E92  1E0C               	comf	___aldiv@quotient+1,f,c
+   691  007E94  6C0B               	negf	___aldiv@quotient,c
+   692  007E96  0E00               	movlw	0
+   693  007E98  220C               	addwfc	___aldiv@quotient+1,f,c
+   694  007E9A  220D               	addwfc	___aldiv@quotient+2,f,c
+   695  007E9C  220E               	addwfc	___aldiv@quotient+3,f,c
+   696  007E9E                     l841:
+   697  007E9E  C00B  F001         	movff	___aldiv@quotient,?___aldiv
+   698  007EA2  C00C  F002         	movff	___aldiv@quotient+1,?___aldiv+1
+   699  007EA6  C00D  F003         	movff	___aldiv@quotient+2,?___aldiv+2
+   700  007EAA  C00E  F004         	movff	___aldiv@quotient+3,?___aldiv+3
+   701  007EAE  0012               	return	
+   702  007EB0                     __end_of___aldiv:
+   703                           	opt stack 0
+   704  0000                     tblptru	equ	0xFF8
+   705                           wreg	equ	0xFE8
+   706                           status	equ	0xFD8
+   707                           tblptru	equ	0xFF8
+   708                           wreg	equ	0xFE8
+   709                           status	equ	0xFD8
+   710                           
+   711                           	psect	rparam
+   712  0000                     tblptru	equ	0xFF8
+   713                           wreg	equ	0xFE8
+   714                           status	equ	0xFD8
+
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         0
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM           95     24      24
+    BANK0           160      0       0
+    BANK1           256      0       0
+    BANK2           256      0       0
+    BANK3           256      0       0
+    BANK4           256      0       0
+    BANK5           256      0       0
+    BANK6           256      0       0
+    BANK7           256      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMRAM
+
+    _main->___aldiv
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Critical Paths under _main in BANK6
+
+    None.
+
+Critical Paths under _main in BANK7
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                10    10      0    1309
+                                             14 COMRAM    10    10      0
+                            ___aldiv
+                             ___lmul
+                             _getCad
+ ---------------------------------------------------------------------------------
+ (1) _getCad                                               3     1      2      22
+                                              0 COMRAM     3     1      2
+ ---------------------------------------------------------------------------------
+ (1) ___lmul                                              12     4      8     522
+                                              0 COMRAM    12     4      8
+ ---------------------------------------------------------------------------------
+ (1) ___aldiv                                             14     6      8     604
+                                              0 COMRAM    14     6      8
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 1
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   ___aldiv
+   ___lmul
+   _getCad
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BITCOMRAM           5F      0       0       0        0.0%
+EEDATA             100      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+COMRAM              5F     18      18       1       25.3%
+STACK                0      0       0       2        0.0%
+DATA                 0      0       0       3        0.0%
+BITBANK0            A0      0       0       4        0.0%
+BANK0               A0      0       0       5        0.0%
+BITBANK1           100      0       0       6        0.0%
+BANK1              100      0       0       7        0.0%
+BITBANK2           100      0       0       8        0.0%
+BANK2              100      0       0       9        0.0%
+BITBANK3           100      0       0      10        0.0%
+BANK3              100      0       0      11        0.0%
+BITBANK4           100      0       0      12        0.0%
+BANK4              100      0       0      13        0.0%
+BITBANK5           100      0       0      14        0.0%
+BANK5              100      0       0      15        0.0%
+BITBANK6           100      0       0      16        0.0%
+BANK6              100      0       0      17        0.0%
+BITBANK7           100      0       0      18        0.0%
+BANK7              100      0       0      19        0.0%
+ABS                  0      0       0      20        0.0%
+BIGRAM             7FF      0       0      21        0.0%
+BITSFR               0      0       0     200        0.0%
+SFR                  0      0       0     200        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V1.42 build -159332390 
+Symbol Table                                                                                   Wed Jan 10 23:41:35 2018
+
+                     l40 7D82                       l49 7FD0              __CFG_BOR$ON 000000  
+            __CFG_BORV$3 000000             __CFG_CP0$OFF 000000             __CFG_CP1$OFF 000000  
+           __CFG_CP2$OFF 000000             __CFG_CP3$OFF 000000              __CFG_LVP$ON 000000  
+            __CFG_WDT$ON 000000                      l821 7E3A                      l823 7E46  
+                    l815 7E18                      l841 7E9E                      l833 7E7A  
+                    l825 7E4A                      l809 7E00                      l837 7E88  
+                    l775 7D58                      l783 7D66                      l793 7D9E  
+                    l777 7D5C                      l785 7D7A                      l857 7EC6  
+                    l779 7D60                      l867 7FE4                      l797 7DB2  
+           __CFG_CPB$OFF 000000                      u217 7FF2                      _PR2 000FCB  
+           __CFG_CPD$OFF 000000                      wreg 000FE8                     _ADON 007E10  
+                   _main 7EB0                     start 0000            __CFG_IESO$OFF 000000  
+          __CFG_MCLRE$ON 000000             ___param_bank 000000            __CFG_PLLDIV$1 000000  
+         __CFG_CCP2MX$ON 000000          __end_of___aldiv 7EB0                    ?_main 0001  
+                  _T2CON 000FCA            __CFG_USBDIV$1 000000                    _TRISA 000F92  
+          __CFG_PWRT$OFF 000000            __CFG_WRT0$OFF 000000            __CFG_WRT1$OFF 000000  
+          __CFG_WRT2$OFF 000000      ___lmul@multiplicand 0005            __CFG_WRT3$OFF 000000  
+         __CFG_EBTR0$OFF 000000           __CFG_FCMEN$OFF 000000           __CFG_EBTR1$OFF 000000  
+         __CFG_EBTR2$OFF 000000           __CFG_EBTR3$OFF 000000            __CFG_WRTB$OFF 000000  
+          __CFG_WRTC$OFF 000000            __CFG_WRTD$OFF 000000           __CFG_EBTRB$OFF 000000  
+                  status 000FD8           __CFG_PBADEN$ON 000000          __initialization 7D46  
+           __end_of_main 8000                   ??_main 000F            __activetblptr 000002  
+                 _ADCON0 000FC2                   _ADCON1 000FC1                   _ADCON2 000FC0  
+                 _ADRESH 000FC4                   _CCPR1L 000FBE                   _OSCCON 000FD3  
+         __CFG_XINST$OFF 000000                   ___lmul 7D8E                ??___aldiv 0009  
+         __CFG_STVREN$ON 000000                   _getCad 7D50                   tblptru 000FF8  
+             __accesstop 0060  __end_of__initialization 7D46            ___rparam_used 000001  
+         __pcstackCOMRAM 0001                  ?___lmul 0001                  ?_getCad 0001  
+         ___lmul@product 0009                  _GO_DONE 007E11          __CFG_VREGEN$OFF 000000  
+                __Hparam 0000                  __Lparam 0000                  ___aldiv 7DE4  
+        __size_of___lmul 0056          __size_of_getCad 003E                  __pcinit 7D46  
+                __ramtop 0800                  __ptext0 7EB0                  __ptext1 7D50  
+                __ptext2 7D8E                  __ptext3 7DE4         ___aldiv@dividend 0001  
+   end_of_initialization 7D46            __Lmediumconst 0000         ___aldiv@quotient 000B  
+              _PORTBbits 000F81                _TRISBbits 000F93                _TRISCbits 000F94  
+            _CCP1CONbits 000FBD           __end_of___lmul 7DE4           __end_of_getCad 7D8E  
+    start_initialization 7D46                 ??___lmul 0009                 ??_getCad 0003  
+       __CFG_LPT1OSC$OFF 000000                 ?___aldiv 0001          ___aldiv@divisor 0005  
+        ___aldiv@counter 0009         __CFG_WDTPS$32768 000000                main@valor 0015  
+              main@vejez 0011        ___lmul@multiplier 0001                 __Hrparam 0000  
+               __Lrparam 0000         __size_of___aldiv 00CC            __size_of_main 0150  
+            getCad@canal 0003    __CFG_CPUDIV$OSC1_PLL2 000000      __CFG_FOSC$INTOSC_HS 000000  
+           ___aldiv@sign 000A  

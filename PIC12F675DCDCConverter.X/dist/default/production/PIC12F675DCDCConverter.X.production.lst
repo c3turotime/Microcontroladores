@@ -1,0 +1,384 @@
+
+
+Microchip Technology PIC LITE Macro Assembler V1.45 build -152302408 
+                                                                                               Mon Oct 01 20:05:15 2018
+
+Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160504
+     1                           	processor	12F675
+     2                           	opt	pw 120
+     3                           	opt	lm
+     4                           	psect	cinit,global,class=CODE,merge=1,delta=2
+     5                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1
+     6                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1
+     7                           	psect	maintext,global,class=CODE,split=1,delta=2
+     8                           	psect	text1,local,class=CODE,merge=1,delta=2
+     9                           	dabs	1,0x5E,2
+    10  0000                     
+    11                           ; Version 1.45
+    12                           ; Generated 16/11/2017 GMT
+    13                           ; 
+    14                           ; Copyright © 2017, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    15                           ; All rights reserved.
+    16                           ; 
+    17                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    18                           ; 
+    19                           ; Redistribution and use in source and binary forms, with or without modification, are
+    20                           ; permitted provided that the following conditions are met:
+    21                           ; 
+    22                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    23                           ;        conditions and the following disclaimer.
+    24                           ; 
+    25                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    26                           ;        of conditions and the following disclaimer in the documentation and/or other
+    27                           ;        materials provided with the distribution.
+    28                           ; 
+    29                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    30                           ;        software without specific prior written permission.
+    31                           ; 
+    32                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    33                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    34                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    35                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    36                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    37                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    38                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    39                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    40                           ; 
+    41                           ; 
+    42                           ; Code-generator required, PIC12F675 Definitions
+    43                           ; 
+    44                           ; SFR Addresses
+    45  0000                     	;# 
+    46  0001                     	;# 
+    47  0002                     	;# 
+    48  0003                     	;# 
+    49  0004                     	;# 
+    50  0005                     	;# 
+    51  000A                     	;# 
+    52  000B                     	;# 
+    53  000C                     	;# 
+    54  000E                     	;# 
+    55  000E                     	;# 
+    56  000F                     	;# 
+    57  0010                     	;# 
+    58  0019                     	;# 
+    59  001E                     	;# 
+    60  001F                     	;# 
+    61  0081                     	;# 
+    62  0085                     	;# 
+    63  008C                     	;# 
+    64  008E                     	;# 
+    65  0090                     	;# 
+    66  0095                     	;# 
+    67  0096                     	;# 
+    68  0096                     	;# 
+    69  0099                     	;# 
+    70  009A                     	;# 
+    71  009A                     	;# 
+    72  009B                     	;# 
+    73  009C                     	;# 
+    74  009D                     	;# 
+    75  009E                     	;# 
+    76  009F                     	;# 
+    77  0005                     _GPIObits	set	5
+    78  001E                     _ADRESH	set	30
+    79  001F                     _ADCON0	set	31
+    80  00F9                     _GO_DONE	set	249
+    81  009F                     _ANSEL	set	159
+    82  0085                     _TRISIObits	set	133
+    83                           
+    84                           ; #config settings
+    85  0000                     
+    86                           	psect	cinit
+    87  03FD                     start_initialization:	
+    88  03FD                     __initialization:	
+    89  03FD                     end_of_initialization:	
+    90                           ;End of C runtime variable initialization code
+    91                           
+    92  03FD                     __end_of__initialization:	
+    93  03FD  0183               	clrf	3
+    94  03FE  2BDA               	ljmp	_main	;jump to C main() function
+    95                           
+    96                           	psect	cstackCOMMON
+    97  0000                     __pcstackCOMMON:	
+    98  0000                     ??_main:	
+    99                           
+   100                           	psect	cstackBANK0
+   101  0020                     __pcstackBANK0:	
+   102                           ; 1 bytes @ 0x0
+   103                           
+   104  0020                     ?_main:	
+   105  0020                     ?_getCad:	
+   106                           ; 1 bytes @ 0x0
+   107                           
+   108                           
+   109                           ; 2 bytes @ 0x0
+   110  0020                     	ds	2
+   111  0022                     ??_getCad:	
+   112                           
+   113                           ; 1 bytes @ 0x2
+   114  0022                     	ds	2
+   115  0024                     main@CAD:	
+   116                           
+   117                           ; 2 bytes @ 0x4
+   118  0024                     	ds	2
+   119                           
+   120                           	psect	maintext
+   121  03DA                     __pmaintext:	
+   122 ;;
+   123 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   124 ;;
+   125 ;; *************** function _main *****************
+   126 ;; Defined at:
+   127 ;;		line 33 in file "controlDCDC35a25.c"
+   128 ;; Parameters:    Size  Location     Type
+   129 ;;		None
+   130 ;; Auto vars:     Size  Location     Type
+   131 ;;  CAD             2    4[BANK0 ] short 
+   132 ;; Return value:  Size  Location     Type
+   133 ;;                  1    wreg      void 
+   134 ;; Registers used:
+   135 ;;		wreg, btemp+1, pclath, cstack
+   136 ;; Tracked objects:
+   137 ;;		On entry : B00/0
+   138 ;;		On exit  : 0/0
+   139 ;;		Unchanged: 0/0
+   140 ;; Data sizes:     COMMON   BANK0
+   141 ;;      Params:         0       0
+   142 ;;      Locals:         0       2
+   143 ;;      Temps:          0       0
+   144 ;;      Totals:         0       2
+   145 ;;Total ram usage:        2 bytes
+   146 ;; Hardware stack levels required when called:    1
+   147 ;; This function calls:
+   148 ;;		_getCad
+   149 ;; This function is called by:
+   150 ;;		Startup code after reset
+   151 ;; This function uses a non-reentrant model
+   152 ;;
+   153                           
+   154                           
+   155                           ;psect for function _main
+   156  03DA                     _main:	
+   157                           
+   158                           ;controlDCDC35a25.c: 34: TRISIObits.TRISIO5=0;
+   159                           
+   160                           ;incstack = 0
+   161                           ; Regs used in _main: [wreg+btemp+1+pclath+cstack]
+   162  03DA  1683               	bsf	3,5	;RP0=1, select bank1
+   163  03DB  1285               	bcf	5,5	;volatile
+   164  03DC                     l518:	
+   165                           ;controlDCDC35a25.c: 35: short CAD;
+   166                           ;controlDCDC35a25.c: 36: while(1){
+   167                           
+   168                           
+   169                           ;controlDCDC35a25.c: 37: CAD=getCad();
+   170  03DC  23C9               	fcall	_getCad
+   171  03DD  1283               	bcf	3,5	;RP0=0, select bank0
+   172  03DE  0821               	movf	?_getCad+1,w
+   173  03DF  00A5               	movwf	main@CAD+1
+   174  03E0  0820               	movf	?_getCad,w
+   175  03E1  00A4               	movwf	main@CAD
+   176                           
+   177                           ;controlDCDC35a25.c: 38: if(CAD<207){
+   178  03E2  0825               	movf	main@CAD+1,w
+   179  03E3  3A80               	xorlw	128
+   180  03E4  00DF               	movwf	95
+   181  03E5  3080               	movlw	128
+   182  03E6  025F               	subwf	95,w
+   183  03E7  1D03               	skipz
+   184  03E8  2BEB               	goto	u55
+   185  03E9  30CF               	movlw	207
+   186  03EA  0224               	subwf	main@CAD,w
+   187  03EB                     u55:	
+   188                           
+   189                           ;controlDCDC35a25.c: 39: GPIObits.GP5=1;
+   190  03EB  1283               	bcf	3,5	;RP0=0, select bank0
+   191  03EC  1C03               	btfss	3,0
+   192  03ED  1685               	bsf	5,5	;volatile
+   193                           
+   194                           ;controlDCDC35a25.c: 40: }
+   195                           ;controlDCDC35a25.c: 41: if(CAD>225){
+   196  03EE  1283               	bcf	3,5	;RP0=0, select bank0
+   197  03EF  0825               	movf	main@CAD+1,w
+   198  03F0  3A80               	xorlw	128
+   199  03F1  00DF               	movwf	95
+   200  03F2  3080               	movlw	128
+   201  03F3  025F               	subwf	95,w
+   202  03F4  1D03               	skipz
+   203  03F5  2BF8               	goto	u65
+   204  03F6  30E2               	movlw	226
+   205  03F7  0224               	subwf	main@CAD,w
+   206  03F8                     u65:	
+   207  03F8  1C03               	skipc
+   208  03F9  2BDC               	goto	l518
+   209                           
+   210                           ;controlDCDC35a25.c: 42: GPIObits.GP5=1;
+   211  03FA  1283               	bcf	3,5	;RP0=0, select bank0
+   212  03FB  1685               	bsf	5,5	;volatile
+   213  03FC  2BDC               	goto	l518
+   214  03FD                     __end_of_main:	
+   215                           ;controlDCDC35a25.c: 43: }
+   216                           ;controlDCDC35a25.c: 44: }
+   217                           ;controlDCDC35a25.c: 45: return;
+   218                           
+   219                           
+   220                           	psect	text1
+   221  03C9                     __ptext1:	
+   222 ;; *************** function _getCad *****************
+   223 ;; Defined at:
+   224 ;;		line 24 in file "controlDCDC35a25.c"
+   225 ;; Parameters:    Size  Location     Type
+   226 ;;		None
+   227 ;; Auto vars:     Size  Location     Type
+   228 ;;		None
+   229 ;; Return value:  Size  Location     Type
+   230 ;;                  2    0[BANK0 ] short 
+   231 ;; Registers used:
+   232 ;;		wreg
+   233 ;; Tracked objects:
+   234 ;;		On entry : 0/0
+   235 ;;		On exit  : 0/0
+   236 ;;		Unchanged: 0/0
+   237 ;; Data sizes:     COMMON   BANK0
+   238 ;;      Params:         0       2
+   239 ;;      Locals:         0       0
+   240 ;;      Temps:          0       2
+   241 ;;      Totals:         0       4
+   242 ;;Total ram usage:        4 bytes
+   243 ;; Hardware stack levels used:    1
+   244 ;; This function calls:
+   245 ;;		Nothing
+   246 ;; This function is called by:
+   247 ;;		_main
+   248 ;; This function uses a non-reentrant model
+   249 ;;
+   250                           
+   251                           
+   252                           ;psect for function _getCad
+   253  03C9                     _getCad:	
+   254                           
+   255                           ;controlDCDC35a25.c: 25: TRISIObits.TRISIO0=1;
+   256                           
+   257                           ;incstack = 0
+   258                           ; Regs used in _getCad: [wreg]
+   259  03C9  1683               	bsf	3,5	;RP0=1, select bank1
+   260  03CA  1405               	bsf	5,0	;volatile
+   261                           
+   262                           ;controlDCDC35a25.c: 26: ANSEL=0b00000001;
+   263  03CB  3001               	movlw	1
+   264  03CC  009F               	movwf	31	;volatile
+   265                           
+   266                           ;controlDCDC35a25.c: 27: ADCON0=0b00000011;
+   267  03CD  3003               	movlw	3
+   268  03CE  1283               	bcf	3,5	;RP0=0, select bank0
+   269  03CF  009F               	movwf	31	;volatile
+   270  03D0                     l15:	
+   271                           ;controlDCDC35a25.c: 28: while(GO_DONE){
+   272                           
+   273  03D0  189F               	btfsc	31,1	;volatile
+   274  03D1  2BD0               	goto	l15
+   275                           
+   276                           ;controlDCDC35a25.c: 30: }
+   277                           ;controlDCDC35a25.c: 31: return ADRESH;
+   278  03D2  081E               	movf	30,w	;volatile
+   279  03D3  00A2               	movwf	??_getCad
+   280  03D4  01A3               	clrf	??_getCad+1
+   281  03D5  0822               	movf	??_getCad,w
+   282  03D6  00A0               	movwf	?_getCad
+   283  03D7  0823               	movf	??_getCad+1,w
+   284  03D8  00A1               	movwf	?_getCad+1
+   285  03D9  0008               	return
+   286  03DA                     __end_of_getCad:	
+   287  005E                     btemp	set	94	;btemp
+   288  005E                     wtemp0	set	94
+
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         0
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON            0      0       0
+    BANK0            62      6       6
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMMON
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    _main->_getCad
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 2     2      0      45
+                                              4 BANK0      2     2      0
+                             _getCad
+ ---------------------------------------------------------------------------------
+ (1) _getCad                                               4     2      2       0
+                                              0 BANK0      4     2      2
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 1
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _getCad
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BITCOMMON            0      0       0       0        0.0%
+EEDATA              80      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+BITSFR0              0      0       0       1        0.0%
+SFR0                 0      0       0       1        0.0%
+COMMON               0      0       0       1        0.0%
+BITSFR1              0      0       0       2        0.0%
+SFR1                 0      0       0       2        0.0%
+STACK                0      0       0       2        0.0%
+BITBANK0            3E      0       0       3        0.0%
+BANK0               3E      6       6       4        9.7%
+ABS                  0      0       0       5        0.0%
+DATA                 0      0       0       6        0.0%
+
+
+Microchip Technology PIC Macro Assembler V1.45 build -152302408 
+Symbol Table                                                                                   Mon Oct 01 20:05:15 2018
+
+            __CFG_CP$OFF 0000                       l15 03D0                       u55 03EB  
+                     u65 03F8                      l518 03DC             __CFG_CPD$OFF 0000  
+           __CFG_WDTE$ON 0000                     _main 03DA                     btemp 005E  
+          __CFG_BOREN$ON 0000                     start 0000            __CFG_MCLRE$ON 0000  
+                  ?_main 0020                    _ANSEL 009F                    status 0003  
+                  wtemp0 005E          __initialization 03FD             __end_of_main 03FD  
+                 ??_main 0000                   _ADCON0 001F                   _ADRESH 001E  
+         __CFG_PWRTE$OFF 0000                   _getCad 03C9  __end_of__initialization 03FD  
+         __pcstackCOMMON 0000               __pmaintext 03DA                  ?_getCad 0020  
+                _GO_DONE 00F9          __size_of_getCad 0011                  __ptext1 03C9  
+                main@CAD 0024     end_of_initialization 03FD           __end_of_getCad 03DA  
+    start_initialization 03FD                 ??_getCad 0022                ___latbits 0000  
+          __pcstackBANK0 0020                 _GPIObits 0005            __size_of_main 0023  
+      __CFG_FOSC$INTRCIO 0000               _TRISIObits 0085  
